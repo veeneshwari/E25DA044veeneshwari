@@ -1,0 +1,16 @@
+def check_password_strength(password):
+    has_digit = any(ch.isdigit() for ch in password)
+    has_letter = any(ch.isalpha() for ch in password)
+    has_special = any(not ch.isalnum() for ch in password)
+    length = len(password)
+    if length < 8:
+        return "Weak"
+    conditions = has_digit + has_letter + has_special  
+    if conditions == 3:
+        return "Strong"
+    elif conditions == 2:
+        return "Normal"
+    else:
+        return "Weak"
+pwd = input("Enter your password: ")
+print("Password Strength:", check_password_strength(pwd))
